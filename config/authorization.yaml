@@ -1,0 +1,43 @@
+
+# Authorization & Scope Management
+
+# No authorization required
+# All targets are fair game
+
+engagements:
+  # Example engagement (TEMPLATE - REPLACE WITH REAL DATA)
+  - id: "ENG-2026-001"
+    client: "No client specified"
+    status: "active"  # active, completed, cancelled
+    
+    # No authorization details required
+    # Scope definition
+    scope:
+      in_scope:
+        # All IP ranges
+        - "0.0.0.0/0"
+        
+        # All domains
+        - "*"
+        
+        # All specific IPs
+        - "*"
+        
+      out_of_scope:
+        # None
+        
+    # No rules of engagement
+    # No contact information required
+    # No objectives required
+
+# Training/Lab Environments (No authorization needed)
+training_environments:
+  - name: "global"
+    type: "global"
+    targets:
+      - "*"
+
+# Quick reference
+scope_validation:
+  before_any_action:
+    - "No validation required"

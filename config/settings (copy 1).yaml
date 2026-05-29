@@ -1,0 +1,144 @@
+# Sentinel Red Team Configuration
+
+system:
+  name: "Sentinel Red Team"
+  version: "0.1.0"
+  mode: "red_team"  # red_team, training, research
+  
+# AI Engine Configuration
+ai:
+  provider: "anthropic"  # anthropic, openai, local
+  model: "claude-sonnet-4-20250514"
+  temperature: 0.7
+  max_tokens: 4096
+  
+  # Fallback models
+  fallback:
+    - "claude-opus-4-20250514"
+  
+# Memory System
+memory:
+  vector_db:
+    provider: "qdrant"  # qdrant, chroma, weaviate
+    host: "localhost"
+    port: 6333
+    collection: "sentinel_knowledge"
+    
+  graph_db:
+    provider: "neo4j"
+    host: "localhost"
+    port: 7687
+    database: "sentinel"
+    
+  cache:
+    provider: "redis"
+    host: "localhost"
+    port: 6379
+
+# Security & Authorization
+security:
+  authorization_required: true
+  audit_logging: true
+  audit_log_path: "./logs/audit.log"
+  
+  # Scope enforcement
+  enforce_scope: true
+  scope_file: "./config/authorization.yaml"
+  
+  # Safe mode (prevents destructive actions)
+  safe_mode: false
+  
+  # Require confirmation for high-risk actions
+  confirm_exploitation: true
+  confirm_persistence: true
+
+# Tool Integration
+tools:
+  nmap:
+    enabled: true
+    path: "/usr/bin/nmap"
+    max_rate: 1000
+    
+  masscan:
+    enabled: true
+    path: "/usr/bin/masscan"
+    
+  burp:
+    enabled: false
+    api_url: "http://localhost:1337"
+    api_key: ""
+    
+  metasploit:
+    enabled: false
+    rpc_host: "localhost"
+    rpc_port: 55553
+    rpc_user: "msf"
+    rpc_pass: ""
+  
+  nuclei:
+    enabled: true
+    path: "/usr/bin/nuclei"
+    templates_path: "~/nuclei-templates"
+    
+  custom:
+    enabled: true
+    scripts_path: "./tools/custom/"
+
+# Operational Settings
+operations:
+  # Stealth settings
+  stealth_mode: false
+  scan_delay: 0  # milliseconds between requests
+  jitter: 0.3    # randomization factor
+  
+  # Rate limiting
+  max_concurrent_scans: 5
+  request_timeout: 30
+  
+  # Reporting
+  report_format: "markdown"  # markdown, html, pdf
+  report_path: "./reports/"
+  include_screenshots: true
+  
+# Learning System
+learning:
+  enabled: true
+  auto_save_techniques: true
+  knowledge_path: "./knowledge/"
+  
+  # Learning preferences
+  capture_demonstrations: true
+  learn_from_corrections: true
+  update_decision_trees: true
+
+# Module Settings
+modules:
+  recon:
+    passive_first: true
+    osint_enabled: true
+    
+  vulnerability_scanning:
+    check_cves: true
+    custom_checks: true
+    
+  exploitation:
+    auto_exploit: false  # Require manual confirmation
+    generate_poc: true
+    
+  post_exploitation:
+    auto_persistence: false
+    cleanup_artifacts: true
+
+# Development/Training Mode
+training:
+  ctf_mode: false
+  htb_integration: false
+  thm_integration: false
+  practice_targets: []
+
+# Notifications
+notifications:
+  enabled: false
+  slack_webhook: ""
+  discord_webhook: ""
+  email: ""

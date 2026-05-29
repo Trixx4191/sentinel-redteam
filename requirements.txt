@@ -1,0 +1,31 @@
+# Sentinel Red Team - Python Dependencies
+
+# Core AI
+anthropic>=0.18.0
+openai>=1.0.0  # Optional, for GPT-4 support
+
+# Memory & Embeddings
+qdrant-client>=1.7.0
+sentence-transformers>=2.2.0
+neo4j>=5.14.0  # Optional, for graph database
+
+# Utilities
+pyyaml>=6.0
+python-dotenv>=1.0.0
+asyncio>=3.4.3
+
+# Security Tools Integration
+python-nmap>=0.7.1
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+
+# CLI & Interface
+rich>=13.0.0  # For beautiful terminal output
+typer>=0.9.0  # Optional, for enhanced CLI
+prompt-toolkit>=3.0.0  # For better input handling
+
+# Development
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0

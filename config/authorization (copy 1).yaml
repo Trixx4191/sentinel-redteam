@@ -1,0 +1,82 @@
+# Authorization & Scope Management
+
+# ⚠️ CRITICAL: All entries require written authorization
+# Never add targets without explicit permission
+
+engagements:
+  # Example engagement (TEMPLATE - REPLACE WITH REAL DATA)
+  - id: "ENG-2026-001"
+    client: "Example Corp"
+    status: "active"  # active, completed, cancelled
+    
+    # Authorization details
+    authorization:
+      document: "path/to/signed_authorization.pdf"
+      signed_by: "John Doe, CISO"
+      signed_date: "2026-02-01"
+      valid_until: "2026-03-01"
+      
+    # Scope definition
+    scope:
+      in_scope:
+        # IP ranges
+        - "192.168.1.0/24"
+        - "10.0.0.0/16"
+        
+        # Domains
+        - "*.example.com"
+        - "app.example.com"
+        
+        # Specific IPs
+        - "203.0.113.10"
+        
+      out_of_scope:
+        - "192.168.1.50"  # Production database
+        - "prod.example.com"
+        
+    # Rules of engagement
+    roe:
+      testing_hours: "09:00-17:00 EST Mon-Fri"
+      avoid_dos: true
+      avoid_data_destruction: true
+      report_critical_immediately: true
+      
+    # Contact information
+    contacts:
+      primary: "security@example.com"
+      emergency: "+1-555-0123"
+      
+    # Objectives
+    objectives:
+      - "Identify external attack surface"
+      - "Test web application security"
+      - "Assess network segmentation"
+      - "Evaluate incident response"
+
+# Training/Lab Environments (No authorization needed)
+training_environments:
+  - name: "HackTheBox"
+    type: "ctf_platform"
+    targets:
+      - "*.htb"
+      - "10.10.10.0/24"
+      
+  - name: "TryHackMe"
+    type: "ctf_platform"
+    targets:
+      - "*.thm"
+      - "10.10.0.0/16"
+      
+  - name: "Personal Lab"
+    type: "owned"
+    targets:
+      - "192.168.56.0/24"  # VirtualBox host-only network
+      - "172.16.0.0/16"    # Local lab network
+
+# Quick reference
+scope_validation:
+  before_any_action:
+    - "Verify target is in authorized scope"
+    - "Check authorization is current"
+    - "Confirm action complies with RoE"
+    - "Log all activities"
